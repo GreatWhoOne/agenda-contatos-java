@@ -11,7 +11,7 @@ public class ConnectionDB {
         try {
             connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/curso-db-java", "postgres", "postgres");
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            System.out.println("Erro: "+e.toString());
         }
         return connection;
     }
