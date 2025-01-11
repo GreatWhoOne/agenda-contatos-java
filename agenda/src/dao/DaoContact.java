@@ -52,7 +52,7 @@ public class DaoContact implements ICrud {
     }
 
     @Override
-    public void deleteContact(int idContact) {
+    public Contact deleteContact(int idContact) {
         String sql = "DELETE FROM tb_contatos WHERE id = ?";
         try {
             PreparedStatement stm = ConnectionDB.getConnection().prepareStatement(sql);
@@ -63,10 +63,11 @@ public class DaoContact implements ICrud {
         } finally {
             ConnectionDB.finishConnection();
         }
+        return null;
     }
 
     @Override
-    public List<Contact> readContact() {
+    public List<Contact> listContact() {
         String sql = "SELECT * FROM tb_contatos";
         List<Contact> contacts = new ArrayList<>();
         try {
@@ -91,7 +92,7 @@ public class DaoContact implements ICrud {
     }
 
     @Override
-    public Contact readContactById(int id) {
+    public Contact listContactById(int id) {
         Contact contact = null;
         String sql = "SELECT * FROM tb_contatos WHERE id = ?";
         try {
